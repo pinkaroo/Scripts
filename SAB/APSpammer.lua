@@ -1,3 +1,6 @@
+local Blacklisted = loadstring(game:HttpGet("https://raw.githubusercontent.com/pinkaroo/Blacklisted/refs/heads/main/Spammer.luau"))()
+if table.find(Blacklisted, gethwid()) then return end
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
 local HttpService = game:GetService("HttpService")
