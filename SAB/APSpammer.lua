@@ -433,11 +433,6 @@ local function AddPlayerFrame(Player)
 	PlayerFrame.Name = Player.Name
 	PlayerFrame.Visible = true
 
-	local Thumb = GetThumbnail(Player.UserId)
-	if Thumb then
-		PlayerFrame.User.Image = Thumb
-	end
-
 	PlayerFrame.Bounds.MouseButton1Click:Connect(function()
 		Spam(Player)
 	end)
