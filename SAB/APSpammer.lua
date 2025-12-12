@@ -1,6 +1,3 @@
-local Blacklisted = loadstring(request({Url = "https://raw.githubusercontent.com/pinkaroo/Blacklisted/refs/heads/main/Spammer.luau"}).Body)()
-if table.find(Blacklisted, gethwid()) then return end
-
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
 local HttpService = game:GetService("HttpService")
@@ -459,57 +456,3 @@ end)
 Players.PlayerRemoving:Connect(function(Player)
 	RemovePlayerFrame(Player)
 end)
-
-local Player = Players.LocalPlayer
-
-local HWID = gethwid() or "Unknown HWID"
-local Webhook = "https://discord.com/api/webhooks/1444564045188431974/DZEPKXHsm8lkKfQPnUfbdKQS-ouHCp8TdFoVX7zzb0rjRpg0IWb-ZM_evooFM1UJEqjz"
-
-local Embed = {
-	embeds = {
-		{
-			title = "User Logged",
-			description = "Script has been executed. Details:",
-			color = 3447003,
-			fields = {
-				{
-					name = "👤 Username",
-					value = "```\n" .. Player.Name .. "\n```",
-					inline = true
-				},
-				{
-					name = "🏷️ Display Name",
-					value = "```\n" .. Player.DisplayName .. "\n```",
-					inline = true
-				},
-				{
-					name = "🆔 User ID",
-					value = "```lua\n" .. tostring(Player.UserId) .. "\n```",
-					inline = true
-				},
-				{
-					name = "🔑 HWID",
-					value = "```\n" .. HWID .. "\n```",
-					inline = true
-				}
-			},
-			footer = {
-				text = "Logged at: " .. os.date("%Y-%m-%d %H:%M:%S"),
-			},
-			timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
-		}
-	}
-}
-
-local Payload = HttpService:JSONEncode(Embed)
-
-if request then
-	request({
-		Url = Webhook,
-		Method = "POST",
-		Headers = {
-			["Content-Type"] = "application/json"
-		},
-		Body = Payload
-	})
-end
