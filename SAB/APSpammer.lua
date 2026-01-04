@@ -392,10 +392,10 @@ end
 
 local function Execute(Player, Command, Yield)
 	if Yield then
-		ReplicatedStorage.Packages.Net["RE/AdminPanelService/ExecuteCommand"]:FireServer(Player, Command)
+		ReplicatedStorage.Packages.Net["RE/352aad58-c786-4998-886b-3e4fa390721e"]:FireServer("78a772b6-9e1c-4827-ab8b-04a07838f298", Player, Command)
 	else
 		task.spawn(function()
-			ReplicatedStorage.Packages.Net["RE/AdminPanelService/ExecuteCommand"]:FireServer(Player, Command)
+			ReplicatedStorage.Packages.Net["RE/352aad58-c786-4998-886b-3e4fa390721e"]:FireServer("78a772b6-9e1c-4827-ab8b-04a07838f298", Player, Command)
 		end)
 	end
 end
